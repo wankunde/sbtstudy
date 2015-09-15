@@ -1,4 +1,4 @@
-# Scala Study
+# Learn Scala
 
 ## [GITHUB](https://github.com/wankunde/scalatest.git)
 
@@ -26,12 +26,17 @@
 
 ## [Scala Tutorial](http://www.scala-lang.org/docu/files/ScalaTutorial.pdf)
 
-* HelloWorld : first scala
+* HelloWorld : first scala,Strng Interpolation
 * OncePerSecond : anonymous functions
 * Complex : classes
 * CaseClass : case classes and pattern matching
 * TrantTest : traits
 * Reference : Genericity
+----
+* HelloScala.sc : Scala WorkSheet
+* HelloWorldTest : scala test with Funsuite
+
+
 
 
 ## ScalaTest
