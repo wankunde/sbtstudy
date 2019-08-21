@@ -1,4 +1,4 @@
-package scalatest
+package com.wankun.scalademo1
 
 /**
  * Author : wankun

@@ -1,4 +1,4 @@
-package scalatest
+package com.wankun.scalademo1
 
 /**
  * similar to Interface in java

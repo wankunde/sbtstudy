@@ -1,9 +1,4 @@
-package scalatest
-
-/**
- * case classes and pattern matching
- */
-
+package com.wankun.scalademo1
 
 abstract class Tree
 
@@ -15,6 +10,7 @@ case class Const(v: Int) extends Tree
 
 
 object Tree {
+
   /**
    * type alias is a shorthand for a long function
    */

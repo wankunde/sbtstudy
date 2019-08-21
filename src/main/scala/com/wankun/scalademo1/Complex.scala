@@ -1,6 +1,6 @@
-package scalatest
+package com.wankun.scalademo1
 
-class Complex(real: Double, imaginary: Double) {
+case class Complex(real: Double, imaginary: Double) {
 
   override def toString() = "" + re + (if (im < 0) "" else "+") + im + "i"
 
@@ -11,10 +11,10 @@ class Complex(real: Double, imaginary: Double) {
 
 object ComplexNumbers {
   def main(args: Array[String]) {
-    val c = new Complex(2.3, 4.5)
+    val c = Complex(2.3, 4.5)
     println(c.im)
 
     println(c)
-    println(new Complex(6.7, -1.2))
+    println(Complex(6.7, -1.2))
   }
 }
