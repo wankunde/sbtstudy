@@ -65,6 +65,7 @@
 * testOnly : 执行指定UT，例如 `testOnly *.WithColumn*`
 * package : 项目打包
 * project : 查看当前项目
+* scalastyle : 检查Scala代码规范，此时会读取`scalastyle-config.xml` 配置文件对项目代码进行格式检查
 
 
 ## build.sbt

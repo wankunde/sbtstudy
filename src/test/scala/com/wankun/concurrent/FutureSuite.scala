@@ -1,4 +1,4 @@
-// Copyright 2019 Leyantech Ltd. All Rights Reserved.
+// Copyright 2019 wankun. All Rights Reserved.
 package com.wankun.concurrent
 
 import com.wankun.util.FunSuiteBase
@@ -24,7 +24,7 @@ class FutureSuite extends FunSuiteBase {
       "hello future"
     }
 
-    // 定义完Future后并不会立即执行
+    /* 定义完Future后并不会立即执行 */
     Thread sleep 2000
     logInfo("main thread finished")
     val ret = Await result(future, 3 seconds)

@@ -1,5 +1,7 @@
 package com.wankun.scalademo1
 
+import com.wankun.util.Logging
+
 abstract class Tree
 
 case class Sum(l: Tree, r: Tree) extends Tree
@@ -9,7 +11,7 @@ case class Var(n: String) extends Tree
 case class Const(v: Int) extends Tree
 
 
-object Tree {
+object Tree extends Logging{
 
   /**
    * type alias is a shorthand for a long function
@@ -43,9 +45,9 @@ object Tree {
       case "y" => 7
     }
 
-    println("Expression : " + exp)
-    println("evaluation with x=5,y=7:" + eval(exp, env))
-    println("Derivative relative to x:\n " + derive(exp, "x"))
-    println("Derivative relative to y:\n " + derive(exp, "y"))
+    logInfo("Expression : " + exp)
+    logInfo("evaluation with x=5,y=7:" + eval(exp, env))
+    logInfo("Derivative relative to x:\n " + derive(exp, "x"))
+    logInfo("Derivative relative to y:\n " + derive(exp, "y"))
   }
 }

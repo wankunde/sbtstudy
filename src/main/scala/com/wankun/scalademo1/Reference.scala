@@ -1,5 +1,7 @@
 package com.wankun.scalademo1
 
+import com.wankun.util.Logging
+
 /**
  * Author : wankun
  * Date : 2015/9/11 10:23
@@ -16,10 +18,10 @@ class Reference[T] {
 }
 
 
-object IntegerReference {
+object IntegerReference extends Logging {
   def main(args: Array[String]) {
     val cell = new Reference[Int]
     cell.set(13)
-    println("Reference contains the half of " + (cell.get * 2))
+    logInfo("Reference contains the half of " + (cell.get * 2))
   }
 }

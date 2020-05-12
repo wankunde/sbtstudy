@@ -4,6 +4,7 @@ import com.wankun.parser.language.model._
 
 import scala.util.parsing.combinator.syntactical.StandardTokenParsers
 
+// scalastyle:off
 // small interpreted language with the following features:
 // 		- variable definitions and references
 //		- if-else statements
@@ -23,7 +24,7 @@ class SmallLanguageParser extends StandardTokenParsers {
     case a ~ b ~ c ~ None => new Function(a, b, c, Number(0))
     case a ~ b ~ c ~ d => new Function(a, b, c, d.get)
   }
-  
+
   def returnStatement: Parser[Expr] = "return" ~> expr ^^ {
     e => e
   }
@@ -145,3 +146,4 @@ class SmallLanguageParser extends StandardTokenParsers {
     phrase(p)(new lexical.Scanner(in))
   }
 }
+// scalastyle:on

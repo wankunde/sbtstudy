@@ -14,6 +14,8 @@ trait Logging {
   // be serialized and used on another machine
   @transient private var log_ : Logger = null
 
+  implicit def anyToString(any: Any): String = any.toString
+
   // Method to get the logger name for this object
   protected def logName = {
     // Ignore trailing $'s in the class names for Scala objects

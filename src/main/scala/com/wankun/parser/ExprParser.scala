@@ -1,11 +1,9 @@
 package com.wankun.parser
 
+import com.wankun.util.Logging
+
 import scala.util.parsing.combinator.RegexParsers
 
-/**
-  * @author kun.wan, <kun.wan@leyantech.com>
-  * @date 2019-08-07.
-  */
 class ExprParser extends RegexParsers {
 
   val number: Parser[Int] = "[1-9][0-9]*".r ^^ (_.toInt)
@@ -21,11 +19,11 @@ class ExprParser extends RegexParsers {
   }
 }
 
-object TestExprParser {
+object TestExprParser extends Logging {
 
   def main(args: Array[String]): Unit = {
     val parser = new ExprParser
     val result = parser.parseAll(parser.expr, "9*8+21/7")
-    println(result.get)
+    logInfo(s"${result.get}")
   }
 }

@@ -1,7 +1,9 @@
 package com.wankun.parser.language.runtime
-import com.wankun.parser.language.model._
 
-class Interpreter(program: Program) {
+import com.wankun.parser.language.model._
+import com.wankun.util.Logging
+
+class Interpreter(program: Program) extends Logging {
   var currentScope = new Scope("global", null)
 
   def run() {
@@ -25,10 +27,10 @@ class Interpreter(program: Program) {
   private def calculateExpr(e: Expr): Int = {
     e match {
       case Number(value) => value
-      case Identifier(name) => {
+      case Identifier(name) =>
         calculateExpr(getVariable(e.asInstanceOf[Identifier]))
-      }
-      case Operator(op, left, right) => {
+
+      case Operator(op, left, right) =>
         op match {
           case "*" => calculateExpr(left) * calculateExpr(right)
           case "/" => calculateExpr(left) / calculateExpr(right)
@@ -36,7 +38,6 @@ class Interpreter(program: Program) {
           case "+" => calculateExpr(left) + calculateExpr(right)
           case "-" => calculateExpr(left) - calculateExpr(right)
         }
-      }
     }
   }
 
@@ -67,7 +68,7 @@ class Interpreter(program: Program) {
   private def walk(tree: List[Statement]) {
     if (!tree.isEmpty) {
       tree.head match {
-        case FunctionCall(name, values) => {
+        case FunctionCall(name, values) =>
           val f = program.functions.filter(x => x.name == name)
 
           if (f.size < 1) sys.error("Error: Undefined function '" +
@@ -79,8 +80,8 @@ class Interpreter(program: Program) {
 
             walk(tree.tail)
           }
-        }
-        case VariableDefinition(name, value) => {
+
+        case VariableDefinition(name, value) =>
           // push this variable into scope
           if (value.isInstanceOf[FunctionCall]) {
             val functionCall = value.asInstanceOf[FunctionCall]
@@ -104,12 +105,12 @@ class Interpreter(program: Program) {
           }
 
           walk(tree.tail)
-        }
-        case PrintStatement(value) => {
-          println(calculateExpr(value))
+
+        case PrintStatement(value) =>
+          logInfo(s"calculateExpr : ${calculateExpr(value)}")
           walk(tree.tail)
-        }
-        case LoopStatement(iterations, statements) => {
+
+        case LoopStatement(iterations, statements) =>
           currentScope = new Scope("", currentScope)
 
           for (i <- 0 until iterations) walk(statements)
@@ -117,8 +118,8 @@ class Interpreter(program: Program) {
           currentScope = currentScope.parentScope
 
           walk(tree.tail)
-        }
-        case IfStatement(condition, trueBranch, falseBranch) => {
+
+        case IfStatement(condition, trueBranch, falseBranch) =>
           currentScope = new Scope("", currentScope)
 
           if (isConditionTrue(condition)) walk(trueBranch) else walk(falseBranch)
@@ -126,8 +127,8 @@ class Interpreter(program: Program) {
           currentScope = currentScope.parentScope
 
           walk(tree.tail)
-        }
-        case _ => ()
+
+        case _ =>
       }
     }
   }

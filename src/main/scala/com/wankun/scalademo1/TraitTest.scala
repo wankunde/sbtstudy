@@ -14,11 +14,11 @@ trait Ord {
 }
 
 class Date(y: Int, m: Int, d: Int) extends Ord {
-  def year = y
+  def year: Int = y
 
-  def month = m
+  def month: Int = m
 
-  def day = d
+  def day: Int = d
 
   override def toString(): String = year + "-" + month + "-" + day
 
@@ -28,9 +28,12 @@ class Date(y: Int, m: Int, d: Int) extends Ord {
       o.day == day && o.month == month && o.year == year
     }
 
+  override def hashCode(): Int = (year + month + day).hashCode()
+
   override def <(that: Any): Boolean = {
-    if (!that.isInstanceOf[Date])
+    if (!that.isInstanceOf[Date]) {
       sys.error("cannot compare " + that + " and a Date")
+    }
 
     val o = that.asInstanceOf[Date]
     (year < o.year) ||
