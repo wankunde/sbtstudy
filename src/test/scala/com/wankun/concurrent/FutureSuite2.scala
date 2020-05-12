@@ -13,7 +13,6 @@ import scala.concurrent.{Await, Future}
  */
 class FutureSuite2 extends FunSuiteBase {
 
-  // scalastyle:off
   /**
    * 20:15:44.902 ForkJoinPool-1-worker-5 INFO com.wankun.concurrent.FutureSuite2: future list
    * thread start...
@@ -41,7 +40,6 @@ class FutureSuite2 extends FunSuiteBase {
    * 20:15:46.750 ForkJoinPool-1-worker-13 INFO com.wankun.concurrent.FutureSuite2: 800
    * 20:15:46.906 ForkJoinPool-1-worker-1 INFO com.wankun.concurrent.FutureSuite2: 2000
    */
-  // scalastyle:off
   test("test future list") {
     val futures = List(1000, 1500, 1200, 2000, 800, 3000) map { ms =>
       Future firstCompletedOf Seq(
