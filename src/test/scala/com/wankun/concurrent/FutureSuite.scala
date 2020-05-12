@@ -1,11 +1,11 @@
 // Copyright 2019 wankun. All Rights Reserved.
 package com.wankun.concurrent
 
+import java.util.concurrent.Executors
+
 import com.wankun.util.FunSuiteBase
 
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
-import scala.concurrent.forkjoin.ForkJoinPool
 import scala.concurrent.{Await, ExecutionContext, Future, TimeoutException}
 import scala.util.{Failure, Success}
 
@@ -16,7 +16,9 @@ import scala.util.{Failure, Success}
 class FutureSuite extends FunSuiteBase {
 
   // 可以使用系统默认线程池，也可以使用自定义线程池
-  implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(new ForkJoinPool(20))
+  // !!! 多线程的线程池要注意了，如果需要运行的线程超过线程池，会造成排队，而排队的后果就是Future实际启动和执行的时间不可控了
+  implicit val ec: ExecutionContext =
+    ExecutionContext.fromExecutor(Executors.newFixedThreadPool(30))
 
   test("test future") {
     logInfo("begin main thread")
