@@ -179,3 +179,14 @@ javaOptions in Test ++= Seq(
   "-Xmx1024m"
 )
 ```
+
+# Spark Test
+
+* 修改 `project/SparkBuild.scala`文件， 将其中的Google Maven仓库替换为阿里云仓库
+* 修改 `project/plugins.sbt`文件，增加`addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.3")` 插件，加速依赖包的下载
+
+* sbt 进入spark命令行
+* projects 查看当前spark项目的模块
+* project sql 进入Spark SQL模块
+* testOnly *.InsertSuite 测试指定的Suite
+* testOnly org.apache.spark.sql.sources.InsertSuite 测试指定的Suite
