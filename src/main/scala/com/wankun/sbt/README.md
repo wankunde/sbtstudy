@@ -182,6 +182,7 @@ javaOptions in Test ++= Seq(
 
 # Spark Test
 
+* 增大sbt的运行内存，mac环境brew安装的sbt修改参数文件`/usr/local/etc/sbtopts`增加内存参数配置：`-mem   2048`
 * 修改 `project/SparkBuild.scala`文件， 将其中的Google Maven仓库替换为阿里云仓库
 * 修改 `project/plugins.sbt`文件，增加`addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.3")` 插件，加速依赖包的下载
 
