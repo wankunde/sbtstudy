@@ -5,6 +5,8 @@ import com.wankun.util.Logging
 
 /**
  * 前两种方法都很简单，关键是iterator2的参数明显应该是一个函数，但是确可以传入一个函数，并lazy执行
+ * call-by-value:
+ * call-by-name:
  */
 object LazyFunction extends Logging {
 
