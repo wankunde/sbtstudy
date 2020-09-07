@@ -1,7 +1,7 @@
 // Copyright 2019 wankun. All Rights Reserved.
 package com.wankun.concurrent
 
-import com.wankun.util.FunSuiteBase
+import com.wankun.FunSuiteBase
 
 import scala.concurrent.duration._
 import scala.concurrent.forkjoin.ForkJoinPool
@@ -20,8 +20,10 @@ class FutureSuite2 extends FunSuiteBase {
    */
   test("test future list") {
 
-    val timeout = 1100 millisecond
+    // System processes
+    logInfo(s"System processes: ${Runtime.getRuntime.availableProcessors()}")
 
+    val timeout = 1100 millisecond
 
     // List[Future] 在被创建的时候就开始执行了
     val futures = List(1000, 1500, 1200, 2000, 800, 3000) map { ms =>
@@ -33,6 +35,7 @@ class FutureSuite2 extends FunSuiteBase {
       }
 
       Future firstCompletedOf Seq(f, Future {
+        logInfo("future list thread2 start...")
         Thread sleep 1100
         "-1"
       })

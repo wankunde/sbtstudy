@@ -3,23 +3,23 @@ name := "sbtstudy"
 
 organization := "com.wankun"
 
-crossScalaVersions := Seq("2.11.12", "2.12.8")
+crossScalaVersions := Seq("2.12.8", "2.11.12")
 
 version := "1.0"
 
 scalaVersion := crossScalaVersions.value.head
 
-sparkVersion := "2.4.0.cloudera2"
-
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % sparkVersion.value % "provided",
-  "org.apache.spark" %% "spark-sql" % sparkVersion.value % "provided",
+  "org.apache.spark" %% "spark-core" % "3.0.0" % "provided",
+  "org.apache.spark" %% "spark-sql" % "3.0.0" % "provided",
+  "org.apache.spark" %% "spark-hive" % "3.0.0" % "provided",
 
   // Test deps
   "org.scalatest" %% "scalatest" % "3.0.3" % "test",
-  "org.apache.spark" %% "spark-core" % sparkVersion.value % "test" classifier "tests",
-  "org.apache.spark" %% "spark-sql" % sparkVersion.value % "test" classifier "tests",
-  "org.apache.spark" %% "spark-catalyst" % sparkVersion.value % "test" classifier "tests"
+  "org.apache.spark" %% "spark-core" % "3.0.0" % "test" classifier "tests",
+  "org.apache.spark" %% "spark-sql" % "3.0.0" % "test" classifier "tests",
+  "org.apache.spark" %% "spark-hive" % "3.0.0" % "test" classifier "tests",
+  "org.apache.spark" %% "spark-catalyst" % "3.0.0" % "test" classifier "tests"
 )
 
 libraryDependencies ++= Seq(

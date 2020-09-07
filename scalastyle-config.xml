@@ -144,7 +144,7 @@ This file is divided into 3 sections:
   <!-- As of SPARK-7558, all tests in Spark should extend o.a.s.FunSuiteBase instead of FunSuite directly -->
   <check customId="funsuite" level="error" class="org.scalastyle.scalariform.TokenChecker" enabled="false">
     <parameters><parameter name="regex">^FunSuite[A-Za-z]*$</parameter></parameters>
-    <customMessage>Tests must extend com.wankun.util.FunSuiteBase instead.</customMessage>
+    <customMessage>Tests must extend com.wankun.FunSuiteBase instead.</customMessage>
   </check>
 
   <!-- As of SPARK-7977 all printlns need to be wrapped in '// scalastyle:off/on println' -->

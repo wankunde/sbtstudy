@@ -3,7 +3,7 @@ package com.wankun.concurrent
 
 import java.util.concurrent.Executors
 
-import com.wankun.util.FunSuiteBase
+import com.wankun.FunSuiteBase
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future, TimeoutException}
@@ -15,7 +15,6 @@ import scala.util.{Failure, Success}
  */
 class FutureSuite extends FunSuiteBase {
 
-  // 可以使用系统默认线程池，也可以使用自定义线程池
   // !!! 多线程的线程池要注意了，如果需要运行的线程超过线程池，会造成排队，而排队的后果就是Future实际启动和执行的时间不可控了
   implicit val ec: ExecutionContext =
     ExecutionContext.fromExecutor(Executors.newFixedThreadPool(30))
@@ -66,7 +65,6 @@ class FutureSuite extends FunSuiteBase {
    * firstCompletedOf : 返回最早执行完的Future
    */
   test("test future list") {
-
     val timeout = 1100 millisecond
 
     def fallback(timeout: Duration): Future[String] = Future {

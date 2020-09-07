@@ -1,6 +1,7 @@
 // Copyright 2019 Leyantech Ltd. All Rights Reserved.
-package com.wankun.util
+package com.wankun
 
+import com.wankun.util.Logging
 import org.scalatest.{FunSuite, Matchers}
 
 /**

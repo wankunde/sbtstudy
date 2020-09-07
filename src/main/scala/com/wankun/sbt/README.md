@@ -21,6 +21,7 @@
   bintray-spark-packages: https://dl.bintray.com/spark-packages/maven/
   typesafe-releases: http://repo.typesafe.com/typesafe/releases/
   spring-releases: https://repo.spring.io/plugins-release/
+  cloudera-releases: https://repository.cloudera.com/artifactory/cloudera-repos/
 ```
 
 ## Sbt 国内加速
@@ -31,7 +32,7 @@
   activator-local: file://${activator.local.repository-/Users/wankun603/Applications/activator-dist-1.3.12/repository}, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
   maven-central
   typesafe-releases: http://repo.typesafe.com/typesafe/releases
-  typesafe-ivy-releasez: http://repo.typesafe.com/typesafe/ivy-releases, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+  typesafe-ivy-release: http://repo.typesafe.com/typesafe/ivy-releases, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
   
   
   
