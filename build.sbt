@@ -10,9 +10,9 @@ version := "1.0"
 scalaVersion := crossScalaVersions.value.head
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "3.0.0" % "provided",
-  "org.apache.spark" %% "spark-sql" % "3.0.0" % "provided",
-  "org.apache.spark" %% "spark-hive" % "3.0.0" % "provided",
+  "org.apache.spark" %% "spark-core" % "3.0.0",
+  "org.apache.spark" %% "spark-sql" % "3.0.0",
+  "org.apache.spark" %% "spark-hive" % "3.0.0",
 
   // Test deps
   "org.scalatest" %% "scalatest" % "3.0.3" % "test",
