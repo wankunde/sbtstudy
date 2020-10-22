@@ -31,9 +31,13 @@ libraryDependencies ++= Seq(
 
 // setting for assembly plugin
 autoScalaLibrary := false
+
+// skip tests
 test in assembly := {}
+
+// merge class and resource files strategy when find in different jars
 assemblyMergeStrategy in assembly := {
-  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case PathList("META-INF", xs@_*) => MergeStrategy.discard
   case x => MergeStrategy.first
 }
 
