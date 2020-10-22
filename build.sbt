@@ -1,3 +1,4 @@
+import java.util.Locale
 
 name := "sbtstudy"
 
@@ -37,8 +38,15 @@ test in assembly := {}
 
 // merge class and resource files strategy when find in different jars
 assemblyMergeStrategy in assembly := {
-  case PathList("META-INF", xs@_*) => MergeStrategy.discard
-  case x => MergeStrategy.first
+  case m if m.toLowerCase(Locale.ROOT).endsWith("manifest.mf")
+  => MergeStrategy.discard
+  case m if m.toLowerCase(Locale.ROOT).matches("meta-inf.*\\.sf$")
+  => MergeStrategy.discard
+  case "log4j.properties" => MergeStrategy.discard
+  case m if m.toLowerCase(Locale.ROOT).startsWith("meta-inf/services/")
+  => MergeStrategy.filterDistinctLines
+  case "reference.conf" => MergeStrategy.concat
+  case _ => MergeStrategy.first
 }
 
 resolvers += Resolver.url(
