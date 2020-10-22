@@ -1,8 +1,6 @@
 // Copyright 2019 Leyantech Ltd. All Rights Reserved.
 package com.wankun.streaming
 
-import java.util.UUID
-
 import org.apache.spark.sql.SparkSession
 
 /**
