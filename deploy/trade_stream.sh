@@ -8,5 +8,3 @@ spark-submit --class com.wankun.streaming.TradeStream \
 --executor-memory 2g \
 --executor-cores 3 \
 ${BASEDIR}/target/scala-2.12/sbtstudy_2.12-1.0.jar
-
-# --queue thequeue \

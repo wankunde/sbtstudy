@@ -5,16 +5,21 @@ organization := "com.wankun"
 
 crossScalaVersions := Seq("2.12.8", "2.11.12")
 
-version := "1.0"
-
 scalaVersion := crossScalaVersions.value.head
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "3.0.0",
-  "org.apache.spark" %% "spark-sql" % "3.0.0",
-  "org.apache.spark" %% "spark-hive" % "3.0.0",
-  "org.apache.spark" %% "spark-streaming_2.12" % "3.0.0",
-  "org.apache.spark" %% "spark-sql-kafka-0-10_2.12" % "3.0.0",
+  "org.slf4j" % "slf4j-api" % "1.7.5",
+  "log4j" % "log4j" % "1.2.17",
+  "org.slf4j" % "slf4j-log4j12" % "1.7.5",
+
+  // for scala parser
+  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.5",
+
+  "org.apache.spark" %% "spark-core" % "3.0.0" % "provided",
+  "org.apache.spark" %% "spark-sql" % "3.0.0" % "provided",
+  "org.apache.spark" %% "spark-hive" % "3.0.0" % "provided",
+  "org.apache.spark" %% "spark-streaming" % "3.0.0" % "provided",
+  "org.apache.spark" %% "spark-sql-kafka-0-10" % "3.0.0",
 
   // Test deps
   "org.scalatest" %% "scalatest" % "3.0.3" % "test",
@@ -24,18 +29,17 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-catalyst" % "3.0.0" % "test" classifier "tests"
 )
 
-libraryDependencies ++= Seq(
-  "org.slf4j" % "slf4j-api" % "1.7.5",
-  "log4j" % "log4j" % "1.2.17",
-  "org.slf4j" % "slf4j-log4j12" % "1.7.5",
+// setting for assembly plugin
+autoScalaLibrary := false
+test in assembly := {}
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}
 
-  // for scala parser
-  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.5"
-)
-
-resolvers ++= Seq(
-  "cloudera" at "https://repository.cloudera.com/artifactory/cloudera-repos/"
-)
+resolvers += Resolver.url(
+  "bintray-sbt-plugins", url("http://dl.bintray.com/sbt/sbt-plugin-releases")
+)(Resolver.ivyStylePatterns)
 
 scalacOptions ++= Seq(
   "-target:jvm-1.8"
