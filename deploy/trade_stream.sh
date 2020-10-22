@@ -7,4 +7,4 @@ spark-submit --class com.wankun.streaming.TradeStream \
 --driver-memory 1g \
 --executor-memory 2g \
 --executor-cores 3 \
-${BASEDIR}/target/scala-2.12/sbtstudy_2.12-1.0.jar
+${BASEDIR}/target/scala-2.12/sbtstudy-assembly-1.0.jar
