@@ -13,6 +13,8 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "3.0.0",
   "org.apache.spark" %% "spark-sql" % "3.0.0",
   "org.apache.spark" %% "spark-hive" % "3.0.0",
+  "org.apache.spark" %% "spark-streaming_2.12" % "3.0.0",
+  "org.apache.spark" %% "spark-sql-kafka-0-10_2.12" % "3.0.0",
 
   // Test deps
   "org.scalatest" %% "scalatest" % "3.0.3" % "test",
