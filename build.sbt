@@ -21,6 +21,23 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-hive" % "3.0.0" % "provided",
   "org.apache.spark" %% "spark-streaming" % "3.0.0" % "provided",
   "org.apache.spark" %% "spark-sql-kafka-0-10" % "3.0.0",
+  // 因为hive包中和spark包中avro冲突，做移除处理
+//  "org.apache.spark" %% "spark-avro" % "3.0.0",
+  "za.co.absa" %% "abris" % "3.2.1"
+    exclude("org.apache.spark", "spark-avro")
+    exclude("org.apache.avro", "avro"),
+
+  // dependency for kafka schema registry
+  "io.confluent" % "kafka-avro-serializer" % "5.3.1",
+
+  // 引入Avro定义的接口数据对象
+  "com.wankun" % "java" % "1.0"
+    exclude("cglib", "*")
+    exclude("com.google.guava", "*")
+    exclude("io.dropwizard.metrics", "*")
+    exclude("io.netty", "*")
+    exclude("org.apache.avro", "*")
+    exclude("org.apache.calcite", "*"),
 
   // Test deps
   "org.scalatest" %% "scalatest" % "3.0.3" % "test",
@@ -42,7 +59,8 @@ assemblyMergeStrategy in assembly := {
   => MergeStrategy.discard
   case m if m.toLowerCase(Locale.ROOT).matches("meta-inf.*\\.sf$")
   => MergeStrategy.discard
-  case "log4j.properties" => MergeStrategy.discard
+  // assembly log4j.properties and remove $SPARK_HOME/conf/log4j.properties
+  case "log4j.properties" => MergeStrategy.filterDistinctLines
   case m if m.toLowerCase(Locale.ROOT).startsWith("meta-inf/services/")
   => MergeStrategy.filterDistinctLines
   case "reference.conf" => MergeStrategy.concat
@@ -52,6 +70,8 @@ assemblyMergeStrategy in assembly := {
 resolvers += Resolver.url(
   "bintray-sbt-plugins", url("http://dl.bintray.com/sbt/sbt-plugin-releases")
 )(Resolver.ivyStylePatterns)
+
+resolvers += "Confluent Maven Repo" at "http://packages.confluent.io/maven/"
 
 scalacOptions ++= Seq(
   "-target:jvm-1.8"

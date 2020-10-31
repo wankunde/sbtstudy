@@ -68,6 +68,8 @@
 * project : 查看当前项目
 * scalastyle : 检查Scala代码规范，此时会读取`scalastyle-config.xml` 配置文件对项目代码进行格式检查
 
+* coursierDependencyTree 打印项目依赖包 dependency tree
+
 
 ## build.sbt
 
