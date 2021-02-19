@@ -2,11 +2,7 @@
 
 ## 使用步骤
 
-sbt编译项目
-```
-clean
-assembly
-```
+sbt编译项目 : `sbt clean assembly`
 
 spark 运行编译好的assembly jar: `spark-submit --master local  --class com.wankun.streaming.KafkaStreamTest2 target/scala-2.12/sbtstudy-assembly-1.0.jar`
 

@@ -4,6 +4,17 @@
 
 手动安装 `sbt-1.2.8` 版本，这样方便后续和Idea集成
 
+```
+wget https://github.com/sbt/sbt/releases/download/v1.4.7/sbt-1.4.7.tgz
+```
+
+## Redhat 安装
+
+```
+curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
+sudo yum install sbt
+```
+
 # SBT 配置
 
 修改 `~/.sbt/repositories` 
