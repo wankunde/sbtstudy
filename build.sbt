@@ -12,6 +12,7 @@ libraryDependencies ++= Seq(
   "org.slf4j" % "slf4j-api" % "1.7.5",
   "log4j" % "log4j" % "1.2.17",
   "org.slf4j" % "slf4j-log4j12" % "1.7.5",
+  "org.apache.commons" % "commons-lang3" % "3.9",
 
   // for scala parser
   "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.5",

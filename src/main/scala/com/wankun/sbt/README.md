@@ -30,7 +30,7 @@ sudo yum install sbt
   sbt-ivy-snapshots: https://repo.scala-sbt.org/scalasbt/ivy-snapshots/, [organization]/[module]/[revision]/[type]s/[artifact](-[classifier]).[ext], bootOnly
   sbt-plugin-releases: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
   bintray-spark-packages: https://dl.bintray.com/spark-packages/maven/
-  typesafe-releases: http://repo.typesafe.com/typesafe/releases/
+  typesafe-releases: https://repo.typesafe.com/typesafe/releases/
   spring-releases: https://repo.spring.io/plugins-release/
   cloudera-releases: https://repository.cloudera.com/artifactory/cloudera-repos/
 ```
