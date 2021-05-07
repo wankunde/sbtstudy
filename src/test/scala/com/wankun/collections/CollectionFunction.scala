@@ -20,4 +20,12 @@ class CollectionFunction extends FunSuiteBase {
       )
     )
   }
+
+  test("test parallel collections") {
+    val a = Range(1, 10, 1).par
+    a.foreach(i => {
+      println(i)
+      i
+    })
+  }
 }
