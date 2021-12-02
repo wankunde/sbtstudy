@@ -9,6 +9,7 @@ crossScalaVersions := Seq("2.12.8", "2.11.12")
 scalaVersion := crossScalaVersions.value.head
 
 libraryDependencies ++= Seq(
+  "org.scala-lang" % "scala-reflect" % scalaVersion.value,
   "org.slf4j" % "slf4j-api" % "1.7.5",
   "log4j" % "log4j" % "1.2.17",
   "org.slf4j" % "slf4j-log4j12" % "1.7.5",
@@ -32,13 +33,15 @@ libraryDependencies ++= Seq(
   "io.confluent" % "kafka-avro-serializer" % "5.3.1",
 
   // 引入Avro定义的接口数据对象
-  "com.wankun" % "java" % "1.0"
-    exclude("cglib", "*")
-    exclude("com.google.guava", "*")
-    exclude("io.dropwizard.metrics", "*")
-    exclude("io.netty", "*")
-    exclude("org.apache.avro", "*")
-    exclude("org.apache.calcite", "*"),
+//  "com.wankun" % "java" % "1.0"
+//    exclude("cglib", "*")
+//    exclude("com.google.guava", "*")
+//    exclude("io.dropwizard.metrics", "*")
+//    exclude("io.netty", "*")
+//    exclude("org.apache.avro", "*")
+//    exclude("org.apache.calcite", "*"),
+  // 20211201 avro 的测试依赖太麻烦，改成在Java项目中生成Java文件，然后在当前项目中直接引用avro的1.9.2 包进行开发
+  "org.apache.avro" % "avro" % "1.9.2",
 
   // Test deps
   "org.scalatest" %% "scalatest" % "3.0.3" % "test",
