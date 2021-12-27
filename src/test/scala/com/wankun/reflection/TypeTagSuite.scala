@@ -19,7 +19,7 @@ package com.wankun.reflection
 
 import com.wankun.FunSuiteBase
 
-import scala.reflect.ClassTag
+import scala.reflect.{ClassTag, classTag}
 import scala.reflect.runtime.universe.{TypeRef, TypeTag, typeOf, typeTag, weakTypeTag}
 
 /**
@@ -93,7 +93,8 @@ class TypeTagSuite extends FunSuiteBase {
   test("test generic type by ClassTag") {
     assert(getTypeByTypeTag[List[Int]] =:= typeOf[List[Int]])
     assert(!(getTypeByTypeTag[List[Int]] =:= typeOf[List[String]]))
-    // 可以得到范型参数后的类型
+
+    // 可以得到T的Class，但是不能得到范型的Class
     getClassTag[List[Int]] shouldBe classOf[List[String]]
   }
 
